@@ -2,342 +2,452 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Organise Fresh Fruits</title>
 
 <style>
+*{box-sizing:border-box}
 body{
   margin:0;
   font-family:Arial,sans-serif;
-  background:#f4f7f2;
-  color:#172117;
+  color:#12351f;
+  background:#eef7ed;
 }
+.hero{
+  padding:35px 18px;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.94),rgba(240,255,238,.72)),
+    url("https://loremflickr.com/1600/700/fruit,market");
+  background-size:cover;
+  background-position:center;
+}
+.hero-inner{max-width:1200px;margin:auto}
+.logo{
+  font-size:34px;
+  font-weight:800;
+  color:#087b38;
+}
+.logo span{font-size:15px;display:block;letter-spacing:4px}
+.hero h1{font-size:48px;margin:30px 0 5px}
+.hero p{font-size:20px}
+.delivery{
+  display:inline-block;
+  background:#fff;
+  padding:15px 22px;
+  border-radius:15px;
+  margin-top:15px;
+  font-weight:bold;
+}
+.delivery b{color:#07833b}
 .container{
-  max-width:550px;
-  margin:auto;
+  max-width:1200px;
+  margin:25px auto;
+  padding:0 15px;
+}
+.search{
+  width:100%;
   padding:16px;
+  border:1px solid #ccc;
+  border-radius:14px;
+  font-size:16px;
+  margin-bottom:20px;
+}
+.layout{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:20px;
 }
 .card{
   background:white;
   border-radius:20px;
   padding:20px;
-  margin-bottom:15px;
-  box-shadow:0 4px 20px #0001;
+  box-shadow:0 5px 25px #00000012;
 }
-h1{margin:0 0 5px;font-size:29px}
-.subtitle{color:#687068;margin-bottom:18px}
-
+h2{margin-top:0}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
 .fruit{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
   border:1px solid #ddd;
-  border-radius:14px;
-  padding:14px;
-  margin:10px 0;
+  border-radius:16px;
+  padding:10px;
+  text-align:center;
+  background:#fff;
 }
-.name{font-size:18px;font-weight:bold}
-.price{color:#687068;font-size:14px;margin-top:4px}
-
+.fruit img{
+  width:100%;
+  height:130px;
+  object-fit:cover;
+  border-radius:12px;
+}
+.fruit h3{margin:8px 0 4px}
+.price{color:#58705d;margin-bottom:8px}
 .controls{
   display:flex;
+  justify-content:center;
   align-items:center;
   gap:10px;
 }
-.qty-btn{
-  width:38px;
-  height:38px;
+.btn{
+  width:35px;
+  height:35px;
   border:0;
   border-radius:50%;
+  background:#0b8a40;
+  color:white;
   font-size:22px;
-  background:#e8f0e6;
 }
 .qty{
-  min-width:22px;
-  text-align:center;
+  min-width:25px;
   font-weight:bold;
-}
-
-label{
-  display:block;
-  font-weight:bold;
-  margin-top:15px;
 }
 input,textarea,select{
   width:100%;
-  box-sizing:border-box;
   padding:13px;
-  margin-top:6px;
-  border:1px solid #ddd;
+  margin:6px 0 12px;
+  border:1px solid #ccc;
   border-radius:10px;
-  font-size:16px;
+  font-size:15px;
 }
-textarea{min-height:80px}
-
+label{font-weight:bold}
 .total{
+  background:#eff9ee;
+  padding:15px;
+  border-radius:12px;
+  margin-top:10px;
+}
+.total div{
   display:flex;
   justify-content:space-between;
-  font-size:21px;
-  font-weight:bold;
-  margin:18px 0 8px;
+  margin:8px 0;
 }
-.order-btn{
-  width:100%;
-  padding:15px;
-  border:0;
+.grand{
+  font-size:22px;
+  font-weight:800;
+  color:#087b38;
+  border-top:1px solid #ccc;
+  padding-top:12px;
+}
+.upi{
+  background:#f6f0ff;
+  padding:14px;
   border-radius:12px;
-  background:#16833b;
+  margin:15px 0;
+}
+.upi img{
+  width:180px;
+  display:block;
+  margin:10px auto;
+}
+.order{
+  width:100%;
+  padding:16px;
+  border:0;
+  border-radius:13px;
+  background:#0a9b45;
   color:white;
   font-size:18px;
   font-weight:bold;
 }
-.note{
+.note{text-align:center;font-size:12px;color:#667;margin-top:8px}
+footer{
+  margin-top:30px;
+  background:#075728;
+  color:white;
   text-align:center;
-  color:#687068;
-  font-size:12px;
-  margin-top:10px;
+  padding:30px;
+}
+@media(max-width:850px){
+  .layout{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:35px}
+}
+@media(max-width:450px){
+  .grid{grid-template-columns:1fr 1fr}
+  .fruit img{height:105px}
 }
 </style>
 </head>
 
 <body>
 
+<section class="hero">
+<div class="hero-inner">
+  <div class="logo">🍃 Organise Fresh Fruits
+    <span>FRESH • HEALTHY • PREMIUM</span>
+  </div>
+
+  <h1>Fresh Fruits<br>Delivered to Your Home</h1>
+  <p>🍎 Fresh • 🍊 Healthy • 🥭 Premium Quality</p>
+
+  <div class="delivery">
+    🚚 Home Delivery Within 10 KM<br>
+    <b>0–5 KM ₹50 &nbsp; | &nbsp; 5–10 KM ₹100</b>
+  </div>
+</div>
+</section>
+
 <div class="container">
 
+<input class="search" id="search"
+placeholder="🔍 Search your favourite fruit..."
+oninput="searchFruit()">
+
+<div class="layout">
+
 <div class="card">
-<h1>🍎 Organise Fresh Fruits</h1>
-<div class="subtitle">Fresh fruits delivered to your home 🚚</div>
+<h2>🍃 Our Fresh Fruits</h2>
+<p>Choose your fruits and quantity</p>
+
+<div class="grid" id="fruitBox"></div>
 </div>
 
 <div class="card">
-<h2>🍉 Today's Available Fruits</h2>
-<div id="fruits"></div>
-</div>
-
-<div class="card">
-
-<h2>📍 Delivery Details</h2>
+<h2>🛒 Your Order</h2>
 
 <label>Your Name</label>
-<input id="customerName" placeholder="Enter your name">
+<input id="name" placeholder="Enter your name">
 
 <label>Mobile Number</label>
-<input id="customerMobile" type="tel" placeholder="Enter mobile number">
+<input id="mobile" type="tel" placeholder="Enter mobile number">
 
 <label>Delivery Distance</label>
-<select id="distance" onchange="calculate()">
-<option value="">Select distance</option>
-<option value="50">Up to 5 km — ₹50 delivery</option>
-<option value="100">5–10 km — ₹100 delivery</option>
+<select id="distance" onchange="updateTotal()">
+<option value="0">Select delivery distance</option>
+<option value="50">0–5 KM — ₹50</option>
+<option value="100">5–10 KM — ₹100</option>
 </select>
 
-<label>Full Address</label>
-<textarea id="address" placeholder="House / Flat, Street, Landmark"></textarea>
+<label>Full Delivery Address</label>
+<textarea id="address" placeholder="House / Flat / Street / Landmark"></textarea>
 
 <label>Payment Method</label>
 <select id="payment">
 <option>Cash on Delivery</option>
-<option>UPI — 9182974520-z3b9-3@ybl</option>
+<option>UPI Payment</option>
 </select>
 
+<div class="upi">
+<b>💳 UPI Payment</b>
+<p>UPI ID:</p>
+<strong>9182974520-z3b9-3@ybl</strong>
+
+<img id="qr">
+
+<small>Scan QR to pay</small>
+</div>
+
 <div class="total">
+<div>
 <span>Fruit Total</span>
 <span>₹<span id="fruitTotal">0</span></span>
 </div>
 
-<div class="total">
+<div>
 <span>Delivery</span>
 <span>₹<span id="delivery">0</span></span>
 </div>
 
-<div class="total">
+<div class="grand">
 <span>Grand Total</span>
 <span>₹<span id="grandTotal">0</span></span>
 </div>
+</div>
 
-<button class="order-btn" onclick="placeOrder()">
+<button class="order" onclick="placeOrder()">
 📲 Place Order on WhatsApp
 </button>
 
 <div class="note">
-Orders will be confirmed on WhatsApp.
+Order will be confirmed on WhatsApp.
 </div>
 
 </div>
 </div>
+</div>
+
+<footer>
+<h2>🍎 Organise Fresh Fruits</h2>
+Fresh Fruits • Home Delivery • Premium Quality
+<br><br>
+🚚 Delivery Within 10 KM
+</footer>
 
 <script>
 
 const fruits = [
-  ["Apple",200],
-  ["Orange",50],
-  ["Papaya",60],
-  ["Pomegranate",120],
-  ["Guava",70]
+
+["Apple",200,"apple"],
+["Orange",50,"orange"],
+["Papaya",60,"papaya"],
+["Pomegranate",120,"pomegranate"],
+["Guava",70,"guava"],
+
+["Banana",40,"banana"],
+["Mango",80,"mango"],
+["Watermelon",30,"watermelon"],
+["Muskmelon",60,"muskmelon"],
+["Cantaloupe",70,"cantaloupe"],
+
+["Pineapple",70,"pineapple"],
+["Grapes",100,"grapes"],
+["Strawberry",150,"strawberry"],
+["Blueberry",250,"blueberry"],
+["Blackberry",250,"blackberry"],
+
+["Kiwi",120,"kiwi"],
+["Dragon Fruit",150,"dragon fruit"],
+["Cherry",200,"cherry"],
+["Fig",180,"fig fruit"],
+["Plum",120,"plum"],
+
+["Peach",120,"peach"],
+["Apricot",150,"apricot"],
+["Litchi",180,"lychee"],
+["Jackfruit",60,"jackfruit"],
+["Custard Apple",100,"custard apple"],
+
+["Coconut",40,"coconut"],
+["Melon",60,"melon fruit"],
+["Starfruit",100,"starfruit"],
+["Sapota",80,"sapota"],
+["Sweet Pomegranate",140,"pomegranate fruit"]
+
 ];
 
-const quantity = [0,0,0,0,0];
+let qty = new Array(fruits.length).fill(0);
 
-const box = document.getElementById("fruits");
-
-fruits.forEach((fruit,index)=>{
-
-box.innerHTML += `
-<div class="fruit">
-
-<div>
-<div class="name">${fruit[0]}</div>
-<div class="price">₹${fruit[1]} / kg</div>
-</div>
-
-<div class="controls">
-
-<button class="qty-btn"
-onclick="changeQuantity(${index},-1)">−</button>
-
-<span class="qty" id="qty${index}">0</span>
-
-<button class="qty-btn"
-onclick="changeQuantity(${index},1)">+</button>
-
-</div>
-
-</div>
-`;
-
-});
-
-function changeQuantity(index,value){
-
-quantity[index] = Math.max(
-0,
-quantity[index] + value
-);
-
-document.getElementById(
-"qty"+index
-).innerText = quantity[index];
-
-calculate();
-
+function imageUrl(name){
+  return "https://loremflickr.com/500/350/"+encodeURIComponent(name)+",fruit";
 }
 
-function calculate(){
+function render(list=fruits){
 
-let fruitTotal = 0;
+  const box=document.getElementById("fruitBox");
+  box.innerHTML="";
 
-fruits.forEach((fruit,index)=>{
+  list.forEach((f)=>{
 
-fruitTotal +=
-quantity[index] * fruit[1];
+    const i=fruits.indexOf(f);
 
-});
+    box.innerHTML+=`
+    <div class="fruit">
+      <img src="${imageUrl(f[2])}" alt="${f[0]}">
 
-let delivery =
-Number(document.getElementById("distance").value) || 0;
+      <h3>${f[0]}</h3>
 
-document.getElementById("fruitTotal").innerText =
-fruitTotal;
+      <div class="price">₹${f[1]} / kg</div>
 
-document.getElementById("delivery").innerText =
-delivery;
+      <div class="controls">
+        <button class="btn" onclick="changeQty(${i},-1)">−</button>
+        <span class="qty" id="q${i}">${qty[i]}</span>
+        <button class="btn" onclick="changeQty(${i},1)">+</button>
+      </div>
+    </div>`;
+  });
+}
 
-document.getElementById("grandTotal").innerText =
-fruitTotal + delivery;
+function changeQty(i,d){
 
+  qty[i]=Math.max(0,qty[i]+d);
+
+  document.getElementById("q"+i).innerText=qty[i];
+
+  updateTotal();
+}
+
+function updateTotal(){
+
+  let fruitTotal=0;
+
+  fruits.forEach((f,i)=>{
+    fruitTotal += qty[i]*f[1];
+  });
+
+  const delivery=Number(document.getElementById("distance").value);
+
+  document.getElementById("fruitTotal").innerText=fruitTotal;
+  document.getElementById("delivery").innerText=delivery;
+  document.getElementById("grandTotal").innerText=fruitTotal+delivery;
+}
+
+function searchFruit(){
+
+  const text=document.getElementById("search").value.toLowerCase();
+
+  const result=fruits.filter(f =>
+    f[0].toLowerCase().includes(text)
+  );
+
+  render(result);
 }
 
 function placeOrder(){
 
-let name =
-document.getElementById("customerName").value.trim();
+  const n=document.getElementById("name").value.trim();
+  const m=document.getElementById("mobile").value.trim();
+  const a=document.getElementById("address").value.trim();
 
-let mobile =
-document.getElementById("customerMobile").value.trim();
+  const distanceText=document.getElementById("distance")
+    .options[document.getElementById("distance").selectedIndex].text;
 
-let distance =
-document.getElementById("distance").value;
+  const payment=document.getElementById("payment").value;
 
-let address =
-document.getElementById("address").value.trim();
+  let items="";
 
-let payment =
-document.getElementById("payment").value;
+  fruits.forEach((f,i)=>{
+    if(qty[i]>0){
+      items += "🍎 "+f[0]+" — "+qty[i]+" kg — ₹"+(qty[i]*f[1])+"\n";
+    }
+  });
 
-let items = [];
+  if(!n || !m || !a || !items){
+    alert("Please fill your details and select at least one fruit.");
+    return;
+  }
 
-fruits.forEach((fruit,index)=>{
+  if(document.getElementById("distance").value==="0"){
+    alert("Please select delivery distance.");
+    return;
+  }
 
-if(quantity[index] > 0){
+  const total=document.getElementById("grandTotal").innerText;
 
-items.push(
-fruit[0] +
-" - " +
-quantity[index] +
-" kg = ₹" +
-(quantity[index] * fruit[1])
-);
+  const message =
+`🍃 ORGANISE FRESH FRUITS — NEW ORDER
 
+👤 Name: ${n}
+📱 Mobile: ${m}
+
+🚚 Delivery: ${distanceText}
+
+📍 Address:
+${a}
+
+🛒 ORDER:
+${items}
+
+💳 Payment: ${payment}
+
+💰 GRAND TOTAL: ₹${total}
+
+Please confirm my order.`;
+
+  window.location.href =
+  "https://wa.me/919182974520?text="+encodeURIComponent(message);
 }
 
-});
+/* UPI QR */
+const upi =
+"upi://pay?pa=9182974520-z3b9-3@ybl&pn=Organise%20Fresh%20Fruits";
 
-if(!name || !mobile || !distance || !address){
+document.getElementById("qr").src =
+"https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="
++encodeURIComponent(upi);
 
-alert("Please fill all delivery details.");
-
-return;
-
-}
-
-if(items.length === 0){
-
-alert("Please select at least one fruit.");
-
-return;
-
-}
-
-let fruitTotal =
-document.getElementById("fruitTotal").innerText;
-
-let delivery =
-document.getElementById("delivery").innerText;
-
-let grandTotal =
-document.getElementById("grandTotal").innerText;
-
-let message =
-"🍎 Organise Fresh Fruits Order\n\n" +
-
-"Name: " + name + "\n" +
-
-"Mobile: " + mobile + "\n" +
-
-"Delivery: " +
-(distance == 50 ? "Up to 5 km" : "5–10 km") +
-" — ₹" + delivery + "\n" +
-
-"Address: " + address + "\n" +
-
-"Payment: " + payment + "\n\n" +
-
-items.join("\n") +
-
-"\n\nFruit Total: ₹" +
-fruitTotal +
-
-"\nDelivery: ₹" +
-delivery +
-
-"\nGrand Total: ₹" +
-grandTotal;
-
-window.location.href =
-"https://wa.me/919182974520?text=" +
-encodeURIComponent(message);
-
-}
+render();
 
 </script>
 
