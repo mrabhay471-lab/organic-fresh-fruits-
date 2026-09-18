@@ -1,11 +1,345 @@
-<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Organise Fresh Fruits</title>
-<style>body{font-family:Arial;background:#f4f7f2;padding:20px;color:#172117}.card{max-width:520px;margin:auto;background:white;border-radius:20px;padding:22px}h1{margin:0 0 5px}.sub{color:#687068;margin-bottom:20px}.fruit{display:flex;justify-content:space-between;align-items:center;border:1px solid #ddd;border-radius:14px;padding:14px;margin:10px 0}.name{font-weight:700;font-size:18px}.price{color:#687068;font-size:14px}.controls{display:flex;align-items:center;gap:10px}.btn{width:38px;height:38px;border:0;border-radius:50%;font-size:22px}.qty{min-width:20px;text-align:center;font-weight:700}label{display:block;font-weight:700;margin-top:15px}input,textarea{width:100%;box-sizing:border-box;padding:13px;margin-top:6px;border:1px solid #ddd;border-radius:10px;font-size:16px}textarea{min-height:80px}.total{font-size:22px;font-weight:800;margin:20px 0}.order{width:100%;padding:15px;border:0;border-radius:12px;background:#16833b;color:white;font-size:18px;font-weight:700}</style></head>
-<body><div class="card"><h1>🍎 Organise Fresh Fruits</h1><div class="sub">Fresh fruits delivered to your home</div><div id="fruits"></div>
-<label>Your name<input id="name" placeholder="Enter your name"></label><label>Mobile number<input id="mobile" placeholder="Enter mobile number"></label><label>Full delivery address<textarea id="address" placeholder="Enter delivery address"></textarea></label>
-<div class="total">Total: ₹<span id="total">0</span></div><button class="order" onclick="placeOrder()">Place Order on WhatsApp</button></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organise Fresh Fruits</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f7f2;
+  color:#172117;
+}
+.container{
+  max-width:550px;
+  margin:auto;
+  padding:16px;
+}
+.card{
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:15px;
+  box-shadow:0 4px 20px #0001;
+}
+h1{margin:0 0 5px;font-size:29px}
+.subtitle{color:#687068;margin-bottom:18px}
+
+.fruit{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border:1px solid #ddd;
+  border-radius:14px;
+  padding:14px;
+  margin:10px 0;
+}
+.name{font-size:18px;font-weight:bold}
+.price{color:#687068;font-size:14px;margin-top:4px}
+
+.controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.qty-btn{
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  font-size:22px;
+  background:#e8f0e6;
+}
+.qty{
+  min-width:22px;
+  text-align:center;
+  font-weight:bold;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  margin-top:15px;
+}
+input,textarea,select{
+  width:100%;
+  box-sizing:border-box;
+  padding:13px;
+  margin-top:6px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:16px;
+}
+textarea{min-height:80px}
+
+.total{
+  display:flex;
+  justify-content:space-between;
+  font-size:21px;
+  font-weight:bold;
+  margin:18px 0 8px;
+}
+.order-btn{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:12px;
+  background:#16833b;
+  color:white;
+  font-size:18px;
+  font-weight:bold;
+}
+.note{
+  text-align:center;
+  color:#687068;
+  font-size:12px;
+  margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+<h1>🍎 Organise Fresh Fruits</h1>
+<div class="subtitle">Fresh fruits delivered to your home 🚚</div>
+</div>
+
+<div class="card">
+<h2>🍉 Today's Available Fruits</h2>
+<div id="fruits"></div>
+</div>
+
+<div class="card">
+
+<h2>📍 Delivery Details</h2>
+
+<label>Your Name</label>
+<input id="customerName" placeholder="Enter your name">
+
+<label>Mobile Number</label>
+<input id="customerMobile" type="tel" placeholder="Enter mobile number">
+
+<label>Delivery Distance</label>
+<select id="distance" onchange="calculate()">
+<option value="">Select distance</option>
+<option value="50">Up to 5 km — ₹50 delivery</option>
+<option value="100">5–10 km — ₹100 delivery</option>
+</select>
+
+<label>Full Address</label>
+<textarea id="address" placeholder="House / Flat, Street, Landmark"></textarea>
+
+<label>Payment Method</label>
+<select id="payment">
+<option>Cash on Delivery</option>
+<option>UPI — 9182974520-z3b9-3@ybl</option>
+</select>
+
+<div class="total">
+<span>Fruit Total</span>
+<span>₹<span id="fruitTotal">0</span></span>
+</div>
+
+<div class="total">
+<span>Delivery</span>
+<span>₹<span id="delivery">0</span></span>
+</div>
+
+<div class="total">
+<span>Grand Total</span>
+<span>₹<span id="grandTotal">0</span></span>
+</div>
+
+<button class="order-btn" onclick="placeOrder()">
+📲 Place Order on WhatsApp
+</button>
+
+<div class="note">
+Orders will be confirmed on WhatsApp.
+</div>
+
+</div>
+</div>
+
 <script>
-const f=[["Apple",200],["Orange",50],["Papaya",60],["Pomegranate",120],["Guava",70]],q=[0,0,0,0,0],box=document.getElementById("fruits");
-f.forEach((x,i)=>box.innerHTML+=`<div class="fruit"><div><div class="name">${x[0]}</div><div class="price">₹${x[1]}/kg</div></div><div class="controls"><button class="btn" onclick="chg(${i},-1)">−</button><span class="qty" id="q${i}">0</span><button class="btn" onclick="chg(${i},1)">+</button></div></div>`);
-function chg(i,d){q[i]=Math.max(0,q[i]+d);document.getElementById("q"+i).textContent=q[i];document.getElementById("total").textContent=q.reduce((s,v,j)=>s+v*f[j][1],0)}
-function placeOrder(){let n=name.value.trim(),m=mobile.value.trim(),a=address.value.trim(),items=f.map((x,i)=>q[i]?x[0]+": "+q[i]+" kg":null).filter(Boolean).join("\n");if(!n||!m||!a||!items)return alert("Please fill details and select a fruit.");location.href="https://wa.me/919182974520?text="+encodeURIComponent("🍎 Organise Fresh Fruits Order\n\nName: "+n+"\nMobile: "+m+"\nAddress: "+a+"\n\n"+items+"\n\nTotal: ₹"+total.textContent)}
-</script></body></html>
+
+const fruits = [
+  ["Apple",200],
+  ["Orange",50],
+  ["Papaya",60],
+  ["Pomegranate",120],
+  ["Guava",70]
+];
+
+const quantity = [0,0,0,0,0];
+
+const box = document.getElementById("fruits");
+
+fruits.forEach((fruit,index)=>{
+
+box.innerHTML += `
+<div class="fruit">
+
+<div>
+<div class="name">${fruit[0]}</div>
+<div class="price">₹${fruit[1]} / kg</div>
+</div>
+
+<div class="controls">
+
+<button class="qty-btn"
+onclick="changeQuantity(${index},-1)">−</button>
+
+<span class="qty" id="qty${index}">0</span>
+
+<button class="qty-btn"
+onclick="changeQuantity(${index},1)">+</button>
+
+</div>
+
+</div>
+`;
+
+});
+
+function changeQuantity(index,value){
+
+quantity[index] = Math.max(
+0,
+quantity[index] + value
+);
+
+document.getElementById(
+"qty"+index
+).innerText = quantity[index];
+
+calculate();
+
+}
+
+function calculate(){
+
+let fruitTotal = 0;
+
+fruits.forEach((fruit,index)=>{
+
+fruitTotal +=
+quantity[index] * fruit[1];
+
+});
+
+let delivery =
+Number(document.getElementById("distance").value) || 0;
+
+document.getElementById("fruitTotal").innerText =
+fruitTotal;
+
+document.getElementById("delivery").innerText =
+delivery;
+
+document.getElementById("grandTotal").innerText =
+fruitTotal + delivery;
+
+}
+
+function placeOrder(){
+
+let name =
+document.getElementById("customerName").value.trim();
+
+let mobile =
+document.getElementById("customerMobile").value.trim();
+
+let distance =
+document.getElementById("distance").value;
+
+let address =
+document.getElementById("address").value.trim();
+
+let payment =
+document.getElementById("payment").value;
+
+let items = [];
+
+fruits.forEach((fruit,index)=>{
+
+if(quantity[index] > 0){
+
+items.push(
+fruit[0] +
+" - " +
+quantity[index] +
+" kg = ₹" +
+(quantity[index] * fruit[1])
+);
+
+}
+
+});
+
+if(!name || !mobile || !distance || !address){
+
+alert("Please fill all delivery details.");
+
+return;
+
+}
+
+if(items.length === 0){
+
+alert("Please select at least one fruit.");
+
+return;
+
+}
+
+let fruitTotal =
+document.getElementById("fruitTotal").innerText;
+
+let delivery =
+document.getElementById("delivery").innerText;
+
+let grandTotal =
+document.getElementById("grandTotal").innerText;
+
+let message =
+"🍎 Organise Fresh Fruits Order\n\n" +
+
+"Name: " + name + "\n" +
+
+"Mobile: " + mobile + "\n" +
+
+"Delivery: " +
+(distance == 50 ? "Up to 5 km" : "5–10 km") +
+" — ₹" + delivery + "\n" +
+
+"Address: " + address + "\n" +
+
+"Payment: " + payment + "\n\n" +
+
+items.join("\n") +
+
+"\n\nFruit Total: ₹" +
+fruitTotal +
+
+"\nDelivery: ₹" +
+delivery +
+
+"\nGrand Total: ₹" +
+grandTotal;
+
+window.location.href =
+"https://wa.me/919182974520?text=" +
+encodeURIComponent(message);
+
+}
+
+</script>
+
+</body>
+</html>
