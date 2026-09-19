@@ -2,40 +2,323 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Organise Fresh Fruits</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Organise Fresh Fruits | Home Delivery</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f3f8f3;color:#12351f}
-header{background:#075b2d;color:white;padding:14px 5%;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:23px;font-weight:800}
-.logo span{color:#c8ef63}
-.wa,.place{background:#08ad50;color:white;border:0;border-radius:12px;padding:12px 18px;font-weight:800}
-.hero{padding:45px 6%;text-align:center;background:linear-gradient(120deg,#f2ffe9,#ccebbd)}
-.hero small{letter-spacing:4px;font-weight:700}
-.hero h1{font-size:44px;margin:12px 0;color:#075b2d}
-.delivery{display:inline-block;background:white;border:1px solid #79ad86;border-radius:14px;padding:14px 22px;font-weight:700}
-.wrap{max-width:1200px;margin:auto;padding:24px 15px;display:grid;grid-template-columns:1fr 330px;gap:20px}
-.search{width:100%;padding:15px;border:1px solid #ccd9d0;border-radius:12px;font-size:16px;margin-bottom:15px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.card,.order{background:white;border:1px solid #d5e3d8;border-radius:15px;padding:12px;box-shadow:0 3px 12px #0001}
-.fruit-img{height:120px;border-radius:12px;background:#edf7ed;display:flex;align-items:center;justify-content:center;font-size:65px}
-.card h3{margin:8px 0 3px;font-size:16px}
-.price{color:#607066;font-size:13px}
-.controls{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:9px}
-.controls button{width:32px;height:32px;border:0;border-radius:50%;background:#087c3c;color:white;font-size:20px}
-.qty{font-weight:800}
-.order{height:max-content;position:sticky;top:10px}
-.order input,.order textarea,.order select{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #ccd9d0;border-radius:10px}
-.order textarea{height:85px}
-.summary{border-top:1px solid #ddd;padding-top:12px;line-height:2}
-.place{width:100%;font-size:17px;cursor:pointer}
-footer{background:#064a25;color:white;text-align:center;padding:25px;margin-top:20px}
-@media(max-width:850px){
-.wrap{grid-template-columns:1fr}
-.grid{grid-template-columns:repeat(2,1fr)}
-.order{position:static}
-.hero h1{font-size:35px}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#172117;
+  background:
+    linear-gradient(rgba(248,250,244,.90),rgba(248,250,244,.94)),
+    url("https://loremflickr.com/1600/1000/fresh,fruits?lock=77");
+  background-size:cover;
+  background-attachment:fixed;
+}
+
+header{
+  min-height:360px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 18px;
+  background:
+    linear-gradient(rgba(15,55,25,.58),rgba(15,55,25,.48)),
+    url("https://loremflickr.com/1600/900/fruit,market?lock=88");
+  background-size:cover;
+  background-position:center;
+  color:white;
+}
+
+.hero{
+  max-width:700px;
+}
+
+.badge{
+  display:inline-block;
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.4);
+  padding:8px 16px;
+  border-radius:30px;
+  margin-bottom:15px;
+  backdrop-filter:blur(8px);
+}
+
+h1{
+  font-size:42px;
+  margin:10px 0;
+}
+
+.hero p{
+  font-size:18px;
+  margin:10px 0 25px;
+}
+
+.hero button{
+  border:0;
+  padding:15px 28px;
+  border-radius:30px;
+  background:#fff;
+  color:#16833b;
+  font-size:17px;
+  font-weight:800;
+}
+
+.info-bar{
+  max-width:1100px;
+  margin:-30px auto 25px;
+  padding:20px;
+  background:rgba(255,255,255,.95);
+  border-radius:22px;
+  box-shadow:0 10px 35px rgba(0,0,0,.12);
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  text-align:center;
+  position:relative;
+}
+
+.info{
+  padding:12px;
+}
+
+.info b{
+  display:block;
+  font-size:18px;
+  margin-top:5px;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+.section-title{
+  text-align:center;
+  margin:30px 0 20px;
+}
+
+.section-title h2{
+  font-size:30px;
+  margin:0 0 7px;
+}
+
+.section-title p{
+  color:#687068;
+}
+
+.fruits{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.fruit{
+  background:rgba(255,255,255,.96);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 7px 25px rgba(0,0,0,.10);
+  border:1px solid rgba(0,0,0,.06);
+}
+
+.fruit img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  display:block;
+}
+
+.fruit-body{
+  padding:15px;
+}
+
+.fruit-name{
+  font-size:20px;
+  font-weight:800;
+}
+
+.price{
+  color:#667066;
+  margin:5px 0 13px;
+}
+
+.controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.btn{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:#16833b;
+  color:white;
+  font-size:25px;
+  font-weight:bold;
+}
+
+.qty{
+  font-size:20px;
+  font-weight:800;
+}
+
+.order-card{
+  margin:35px auto;
+  max-width:700px;
+  background:rgba(255,255,255,.97);
+  padding:25px;
+  border-radius:25px;
+  box-shadow:0 10px 35px rgba(0,0,0,.12);
+}
+
+input,textarea{
+  width:100%;
+  padding:14px;
+  margin:7px 0 15px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
+}
+
+textarea{
+  min-height:90px;
+}
+
+.location-box{
+  background:#eef8ef;
+  padding:15px;
+  border-radius:15px;
+  margin:10px 0 18px;
+}
+
+.location-btn{
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:12px;
+  background:#172117;
+  color:white;
+  font-weight:700;
+  font-size:16px;
+}
+
+.distance{
+  margin-top:12px;
+  line-height:1.7;
+}
+
+.summary{
+  background:#f6f8f4;
+  padding:18px;
+  border-radius:15px;
+  margin-top:15px;
+}
+
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  margin:8px 0;
+}
+
+.total{
+  border-top:1px solid #ddd;
+  padding-top:12px;
+  margin-top:12px;
+  font-size:22px;
+  font-weight:900;
+}
+
+.payment{
+  margin-top:20px;
+  padding:18px;
+  background:#fff8df;
+  border-radius:16px;
+  text-align:center;
+}
+
+.upi-btn{
+  display:block;
+  width:100%;
+  padding:15px;
+  margin-top:10px;
+  background:#16833b;
+  color:white;
+  border:0;
+  border-radius:12px;
+  font-size:17px;
+  font-weight:800;
+}
+
+#qrcode{
+  display:flex;
+  justify-content:center;
+  margin-top:15px;
+}
+
+.order-btn{
+  width:100%;
+  margin-top:20px;
+  padding:17px;
+  border:0;
+  border-radius:14px;
+  background:#25D366;
+  color:white;
+  font-size:19px;
+  font-weight:900;
+}
+
+.note{
+  text-align:center;
+  color:#687068;
+  font-size:13px;
+  margin-top:12px;
+}
+
+footer{
+  text-align:center;
+  padding:35px 15px;
+  background:#172117;
+  color:white;
+  margin-top:40px;
+}
+
+@media(max-width:800px){
+  .fruits{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .info-bar{
+    grid-template-columns:1fr;
+    margin:15px;
+  }
+
+  h1{
+    font-size:34px;
+  }
+}
+
+@media(max-width:520px){
+  .fruits{
+    grid-template-columns:1fr;
+  }
+
+  .fruit img{
+    height:220px;
+  }
+
+  .container{
+    padding:14px;
+  }
 }
 </style>
 </head>
@@ -43,244 +326,28 @@ footer{background:#064a25;color:white;text-align:center;padding:25px;margin-top:
 <body>
 
 <header>
-<div class="logo">🍃 Organise <span>Fresh Fruits</span></div>
-<button class="wa" onclick="document.getElementById('order').scrollIntoView()">WhatsApp Order</button>
+  <div class="hero">
+    <div class="badge">🍃 Fresh • Healthy • Premium</div>
+    <h1>Organise Fresh Fruits</h1>
+    <p>Premium fresh fruits delivered to your home.</p>
+    <button onclick="document.getElementById('fruits').scrollIntoView({behavior:'smooth'})">
+      🛒 Shop Fresh Fruits
+    </button>
+  </div>
 </header>
 
-<section class="hero">
-<small>PURE • FRESH • PREMIUM</small>
-<h1>Fresh Fruits<br>Delivered to Your Home</h1>
-<p>Nature's goodness, straight to your door.</p>
-<div class="delivery">
-🚚 Within 10 KM<br>
-0–5 KM ₹50 &nbsp; | &nbsp; 5–10 KM ₹100
-</div>
-</section>
-
-<div class="wrap">
-
-<main>
-<input class="search" id="search"
-placeholder="🔎 Search your favourite fruit..."
-oninput="render()">
-
-<h2>🍃 Our Fresh Fruits (30 Items)</h2>
-<div class="grid" id="grid"></div>
-</main>
-
-<aside class="order" id="order">
-
-<h2>🛒 Your Order</h2>
-
-<label>Name</label>
-<input id="name" placeholder="Enter your name">
-
-<label>Mobile</label>
-<input id="mobile" type="tel" placeholder="Enter mobile number">
-
-<label>Delivery Distance</label>
-<select id="distance" onchange="updateTotal()">
-<option value="">Select distance</option>
-<option value="50">0–5 KM — ₹50</option>
-<option value="100">5–10 KM — ₹100</option>
-</select>
-
-<label>Address</label>
-<textarea id="address"
-placeholder="House / Flat / Street / Landmark"></textarea>
-
-<label>Payment</label>
-<select id="payment">
-<option>Cash on Delivery</option>
-<option>UPI</option>
-</select>
-
-<div class="summary">
-Fruit Total: ₹<b id="fruitTotal">0</b><br>
-Delivery: ₹<b id="delivery">0</b><br>
-<strong>Grand Total: ₹<span id="grandTotal">0</span></strong>
-</div>
-
-<button class="place" onclick="placeOrder()">
-📲 Place Order on WhatsApp
-</button>
-
-</aside>
-</div>
-
-<footer>
-🍃 Organise Fresh Fruits<br>
-Fresh • Healthy • Premium
-</footer>
-
-<script>
-
-const fruits=[
-["Apple",200,"🍎"],
-["Orange",50,"🍊"],
-["Papaya",60,"🥭"],
-["Pomegranate",120,"❤️"],
-["Guava",70,"🍐"],
-["Banana",40,"🍌"],
-["Mango",80,"🥭"],
-["Watermelon",30,"🍉"],
-["Muskmelon",60,"🍈"],
-["Cantaloupe",70,"🍈"],
-["Pineapple",70,"🍍"],
-["Grapes",100,"🍇"],
-["Strawberry",150,"🍓"],
-["Blueberry",250,"🫐"],
-["Blackberry",250,"🫐"],
-["Kiwi",120,"🥝"],
-["Dragon Fruit",150,"🐉"],
-["Cherry",200,"🍒"],
-["Fig",180,"🫒"],
-["Plum",120,"🟣"],
-["Peach",120,"🍑"],
-["Apricot",150,"🍑"],
-["Litchi",180,"🔴"],
-["Jackfruit",60,"🟡"],
-["Custard Apple",100,"🍈"],
-["Coconut",40,"🥥"],
-["Melon",60,"🍈"],
-["Starfruit",100,"⭐"],
-["Sapota",80,"🟤"],
-["Sweet Pomegranate",140,"❤️"]
-];
-
-let qty=new Array(fruits.length).fill(0);
-
-function render(){
-
-let searchText=document.getElementById("search").value.toLowerCase();
-
-let html="";
-
-fruits.forEach((f,i)=>{
-
-if(!f[0].toLowerCase().includes(searchText)) return;
-
-html+=`
-<div class="card">
-
-<div class="fruit-img">${f[2]}</div>
-
-<h3>${f[0]}</h3>
-
-<div class="price">₹${f[1]} / kg</div>
-
-<div class="controls">
-
-<button onclick="changeQty(${i},-1)">−</button>
-
-<span class="qty">${qty[i]}</span>
-
-<button onclick="changeQty(${i},1)">+</button>
-
-</div>
-
-</div>
-`;
-
-});
-
-document.getElementById("grid").innerHTML=html;
-
-updateTotal();
-}
-
-function changeQty(i,value){
-
-qty[i]=Math.max(0,qty[i]+value);
-
-render();
-}
-
-function updateTotal(){
-
-let fruitTotal=0;
-
-fruits.forEach((f,i)=>{
-fruitTotal += qty[i]*f[1];
-});
-
-let delivery=
-Number(document.getElementById("distance").value)||0;
-
-document.getElementById("fruitTotal").innerText=fruitTotal;
-
-document.getElementById("delivery").innerText=delivery;
-
-document.getElementById("grandTotal").innerText=
-fruitTotal+delivery;
-}
-
-function placeOrder(){
-
-let name=document.getElementById("name").value.trim();
-
-let mobile=document.getElementById("mobile").value.trim();
-
-let address=document.getElementById("address").value.trim();
-
-let distance=document.getElementById("distance").value;
-
-let payment=document.getElementById("payment").value;
-
-let items=[];
-
-fruits.forEach((f,i)=>{
-
-if(qty[i]>0){
-
-items.push(
-f[0]+" — "+qty[i]+" kg — ₹"+(qty[i]*f[1])
-);
-
-}
-
-});
-
-if(!name||!mobile||!address||!distance){
-
-alert("Please fill Name, Mobile, Address and Delivery Distance.");
-
-return;
-}
-
-if(items.length===0){
-
-alert("Please select at least one fruit.");
-
-return;
-}
-
-let message=
-"🍎 ORGANISE FRESH FRUITS ORDER\n\n"+
-"Name: "+name+"\n"+
-"Mobile: "+mobile+"\n"+
-"Address: "+address+"\n"+
-"Payment: "+payment+"\n\n"+
-"ORDER:\n"+
-items.join("\n")+
-"\n\nFruit Total: ₹"+
-document.getElementById("fruitTotal").innerText+
-"\nDelivery: ₹"+
-document.getElementById("delivery").innerText+
-"\nGrand Total: ₹"+
-document.getElementById("grandTotal").innerText;
-
-let whatsappURL=
-"https://wa.me/919182974520?text="+
-encodeURIComponent(message);
-
-window.open(whatsappURL,"_blank");
-
-}
-
-render();
-
-</script>
-
-</body>
-</html>
+<div class="info-bar">
+  <div class="info">
+    🚚
+    <b>10 KM Delivery</b>
+    Nearby Home Delivery
+  </div>
+
+  <div class="info">
+    ⚡
+    <b>15–20 Minutes</b>
+    Estimated Delivery
+  </div>
+
+  <div class="info">
+    💳
