@@ -4,448 +4,279 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Organise Fresh Fruits</title>
-
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  color:#12351f;
-  background:#eef7ed;
-}
-.hero{
-  padding:35px 18px;
-  background:
-    linear-gradient(90deg,rgba(255,255,255,.94),rgba(240,255,238,.72)),
-    url("https://loremflickr.com/1600/700/fruit,market");
-  background-size:cover;
-  background-position:center;
-}
-.hero-inner{max-width:1200px;margin:auto}
-.logo{
-  font-size:34px;
-  font-weight:800;
-  color:#087b38;
-}
-.logo span{font-size:15px;display:block;letter-spacing:4px}
-.hero h1{font-size:48px;margin:30px 0 5px}
-.hero p{font-size:20px}
-.delivery{
-  display:inline-block;
-  background:#fff;
-  padding:15px 22px;
-  border-radius:15px;
-  margin-top:15px;
-  font-weight:bold;
-}
-.delivery b{color:#07833b}
-.container{
-  max-width:1200px;
-  margin:25px auto;
-  padding:0 15px;
-}
-.search{
-  width:100%;
-  padding:16px;
-  border:1px solid #ccc;
-  border-radius:14px;
-  font-size:16px;
-  margin-bottom:20px;
-}
-.layout{
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:20px;
-}
-.card{
-  background:white;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 5px 25px #00000012;
-}
-h2{margin-top:0}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
-.fruit{
-  border:1px solid #ddd;
-  border-radius:16px;
-  padding:10px;
-  text-align:center;
-  background:#fff;
-}
-.fruit img{
-  width:100%;
-  height:130px;
-  object-fit:cover;
-  border-radius:12px;
-}
-.fruit h3{margin:8px 0 4px}
-.price{color:#58705d;margin-bottom:8px}
-.controls{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-}
-.btn{
-  width:35px;
-  height:35px;
-  border:0;
-  border-radius:50%;
-  background:#0b8a40;
-  color:white;
-  font-size:22px;
-}
-.qty{
-  min-width:25px;
-  font-weight:bold;
-}
-input,textarea,select{
-  width:100%;
-  padding:13px;
-  margin:6px 0 12px;
-  border:1px solid #ccc;
-  border-radius:10px;
-  font-size:15px;
-}
-label{font-weight:bold}
-.total{
-  background:#eff9ee;
-  padding:15px;
-  border-radius:12px;
-  margin-top:10px;
-}
-.total div{
-  display:flex;
-  justify-content:space-between;
-  margin:8px 0;
-}
-.grand{
-  font-size:22px;
-  font-weight:800;
-  color:#087b38;
-  border-top:1px solid #ccc;
-  padding-top:12px;
-}
-.upi{
-  background:#f6f0ff;
-  padding:14px;
-  border-radius:12px;
-  margin:15px 0;
-}
-.upi img{
-  width:180px;
-  display:block;
-  margin:10px auto;
-}
-.order{
-  width:100%;
-  padding:16px;
-  border:0;
-  border-radius:13px;
-  background:#0a9b45;
-  color:white;
-  font-size:18px;
-  font-weight:bold;
-}
-.note{text-align:center;font-size:12px;color:#667;margin-top:8px}
-footer{
-  margin-top:30px;
-  background:#075728;
-  color:white;
-  text-align:center;
-  padding:30px;
-}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f8f3;color:#12351f}
+header{background:#075b2d;color:white;padding:14px 5%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:23px;font-weight:800}
+.logo span{color:#c8ef63}
+.wa,.place{background:#08ad50;color:white;border:0;border-radius:12px;padding:12px 18px;font-weight:800}
+.hero{padding:45px 6%;text-align:center;background:linear-gradient(120deg,#f2ffe9,#ccebbd)}
+.hero small{letter-spacing:4px;font-weight:700}
+.hero h1{font-size:44px;margin:12px 0;color:#075b2d}
+.delivery{display:inline-block;background:white;border:1px solid #79ad86;border-radius:14px;padding:14px 22px;font-weight:700}
+.wrap{max-width:1200px;margin:auto;padding:24px 15px;display:grid;grid-template-columns:1fr 330px;gap:20px}
+.search{width:100%;padding:15px;border:1px solid #ccd9d0;border-radius:12px;font-size:16px;margin-bottom:15px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card,.order{background:white;border:1px solid #d5e3d8;border-radius:15px;padding:12px;box-shadow:0 3px 12px #0001}
+.fruit-img{height:120px;border-radius:12px;background:#edf7ed;display:flex;align-items:center;justify-content:center;font-size:65px}
+.card h3{margin:8px 0 3px;font-size:16px}
+.price{color:#607066;font-size:13px}
+.controls{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:9px}
+.controls button{width:32px;height:32px;border:0;border-radius:50%;background:#087c3c;color:white;font-size:20px}
+.qty{font-weight:800}
+.order{height:max-content;position:sticky;top:10px}
+.order input,.order textarea,.order select{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #ccd9d0;border-radius:10px}
+.order textarea{height:85px}
+.summary{border-top:1px solid #ddd;padding-top:12px;line-height:2}
+.place{width:100%;font-size:17px;cursor:pointer}
+footer{background:#064a25;color:white;text-align:center;padding:25px;margin-top:20px}
 @media(max-width:850px){
-  .layout{grid-template-columns:1fr}
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .hero h1{font-size:35px}
-}
-@media(max-width:450px){
-  .grid{grid-template-columns:1fr 1fr}
-  .fruit img{height:105px}
+.wrap{grid-template-columns:1fr}
+.grid{grid-template-columns:repeat(2,1fr)}
+.order{position:static}
+.hero h1{font-size:35px}
 }
 </style>
 </head>
 
 <body>
 
+<header>
+<div class="logo">🍃 Organise <span>Fresh Fruits</span></div>
+<button class="wa" onclick="document.getElementById('order').scrollIntoView()">WhatsApp Order</button>
+</header>
+
 <section class="hero">
-<div class="hero-inner">
-  <div class="logo">🍃 Organise Fresh Fruits
-    <span>FRESH • HEALTHY • PREMIUM</span>
-  </div>
-
-  <h1>Fresh Fruits<br>Delivered to Your Home</h1>
-  <p>🍎 Fresh • 🍊 Healthy • 🥭 Premium Quality</p>
-
-  <div class="delivery">
-    🚚 Home Delivery Within 10 KM<br>
-    <b>0–5 KM ₹50 &nbsp; | &nbsp; 5–10 KM ₹100</b>
-  </div>
+<small>PURE • FRESH • PREMIUM</small>
+<h1>Fresh Fruits<br>Delivered to Your Home</h1>
+<p>Nature's goodness, straight to your door.</p>
+<div class="delivery">
+🚚 Within 10 KM<br>
+0–5 KM ₹50 &nbsp; | &nbsp; 5–10 KM ₹100
 </div>
 </section>
 
-<div class="container">
+<div class="wrap">
 
+<main>
 <input class="search" id="search"
-placeholder="🔍 Search your favourite fruit..."
-oninput="searchFruit()">
+placeholder="🔎 Search your favourite fruit..."
+oninput="render()">
 
-<div class="layout">
+<h2>🍃 Our Fresh Fruits (30 Items)</h2>
+<div class="grid" id="grid"></div>
+</main>
 
-<div class="card">
-<h2>🍃 Our Fresh Fruits</h2>
-<p>Choose your fruits and quantity</p>
+<aside class="order" id="order">
 
-<div class="grid" id="fruitBox"></div>
-</div>
-
-<div class="card">
 <h2>🛒 Your Order</h2>
 
-<label>Your Name</label>
+<label>Name</label>
 <input id="name" placeholder="Enter your name">
 
-<label>Mobile Number</label>
+<label>Mobile</label>
 <input id="mobile" type="tel" placeholder="Enter mobile number">
 
 <label>Delivery Distance</label>
 <select id="distance" onchange="updateTotal()">
-<option value="0">Select delivery distance</option>
+<option value="">Select distance</option>
 <option value="50">0–5 KM — ₹50</option>
 <option value="100">5–10 KM — ₹100</option>
 </select>
 
-<label>Full Delivery Address</label>
-<textarea id="address" placeholder="House / Flat / Street / Landmark"></textarea>
+<label>Address</label>
+<textarea id="address"
+placeholder="House / Flat / Street / Landmark"></textarea>
 
-<label>Payment Method</label>
+<label>Payment</label>
 <select id="payment">
 <option>Cash on Delivery</option>
-<option>UPI Payment</option>
+<option>UPI</option>
 </select>
 
-<div class="upi">
-<b>💳 UPI Payment</b>
-<p>UPI ID:</p>
-<strong>9182974520-z3b9-3@ybl</strong>
-
-<img id="qr">
-
-<small>Scan QR to pay</small>
+<div class="summary">
+Fruit Total: ₹<b id="fruitTotal">0</b><br>
+Delivery: ₹<b id="delivery">0</b><br>
+<strong>Grand Total: ₹<span id="grandTotal">0</span></strong>
 </div>
 
-<div class="total">
-<div>
-<span>Fruit Total</span>
-<span>₹<span id="fruitTotal">0</span></span>
-</div>
-
-<div>
-<span>Delivery</span>
-<span>₹<span id="delivery">0</span></span>
-</div>
-
-<div class="grand">
-<span>Grand Total</span>
-<span>₹<span id="grandTotal">0</span></span>
-</div>
-</div>
-
-<button class="order" onclick="placeOrder()">
+<button class="place" onclick="placeOrder()">
 📲 Place Order on WhatsApp
 </button>
 
-<div class="note">
-Order will be confirmed on WhatsApp.
-</div>
-
-</div>
-</div>
+</aside>
 </div>
 
 <footer>
-<h2>🍎 Organise Fresh Fruits</h2>
-Fresh Fruits • Home Delivery • Premium Quality
-<br><br>
-🚚 Delivery Within 10 KM
+🍃 Organise Fresh Fruits<br>
+Fresh • Healthy • Premium
 </footer>
 
 <script>
 
-const fruits = [
-
-["Apple",200,"apple"],
-["Orange",50,"orange"],
-["Papaya",60,"papaya"],
-["Pomegranate",120,"pomegranate"],
-["Guava",70,"guava"],
-
-["Banana",40,"banana"],
-["Mango",80,"mango"],
-["Watermelon",30,"watermelon"],
-["Muskmelon",60,"muskmelon"],
-["Cantaloupe",70,"cantaloupe"],
-
-["Pineapple",70,"pineapple"],
-["Grapes",100,"grapes"],
-["Strawberry",150,"strawberry"],
-["Blueberry",250,"blueberry"],
-["Blackberry",250,"blackberry"],
-
-["Kiwi",120,"kiwi"],
-["Dragon Fruit",150,"dragon fruit"],
-["Cherry",200,"cherry"],
-["Fig",180,"fig fruit"],
-["Plum",120,"plum"],
-
-["Peach",120,"peach"],
-["Apricot",150,"apricot"],
-["Litchi",180,"lychee"],
-["Jackfruit",60,"jackfruit"],
-["Custard Apple",100,"custard apple"],
-
-["Coconut",40,"coconut"],
-["Melon",60,"melon fruit"],
-["Starfruit",100,"starfruit"],
-["Sapota",80,"sapota"],
-["Sweet Pomegranate",140,"pomegranate fruit"]
-
+const fruits=[
+["Apple",200,"🍎"],
+["Orange",50,"🍊"],
+["Papaya",60,"🥭"],
+["Pomegranate",120,"❤️"],
+["Guava",70,"🍐"],
+["Banana",40,"🍌"],
+["Mango",80,"🥭"],
+["Watermelon",30,"🍉"],
+["Muskmelon",60,"🍈"],
+["Cantaloupe",70,"🍈"],
+["Pineapple",70,"🍍"],
+["Grapes",100,"🍇"],
+["Strawberry",150,"🍓"],
+["Blueberry",250,"🫐"],
+["Blackberry",250,"🫐"],
+["Kiwi",120,"🥝"],
+["Dragon Fruit",150,"🐉"],
+["Cherry",200,"🍒"],
+["Fig",180,"🫒"],
+["Plum",120,"🟣"],
+["Peach",120,"🍑"],
+["Apricot",150,"🍑"],
+["Litchi",180,"🔴"],
+["Jackfruit",60,"🟡"],
+["Custard Apple",100,"🍈"],
+["Coconut",40,"🥥"],
+["Melon",60,"🍈"],
+["Starfruit",100,"⭐"],
+["Sapota",80,"🟤"],
+["Sweet Pomegranate",140,"❤️"]
 ];
 
-let qty = new Array(fruits.length).fill(0);
+let qty=new Array(fruits.length).fill(0);
 
-function imageUrl(name){
-  return "https://loremflickr.com/500/350/"+encodeURIComponent(name)+",fruit";
+function render(){
+
+let searchText=document.getElementById("search").value.toLowerCase();
+
+let html="";
+
+fruits.forEach((f,i)=>{
+
+if(!f[0].toLowerCase().includes(searchText)) return;
+
+html+=`
+<div class="card">
+
+<div class="fruit-img">${f[2]}</div>
+
+<h3>${f[0]}</h3>
+
+<div class="price">₹${f[1]} / kg</div>
+
+<div class="controls">
+
+<button onclick="changeQty(${i},-1)">−</button>
+
+<span class="qty">${qty[i]}</span>
+
+<button onclick="changeQty(${i},1)">+</button>
+
+</div>
+
+</div>
+`;
+
+});
+
+document.getElementById("grid").innerHTML=html;
+
+updateTotal();
 }
 
-function render(list=fruits){
+function changeQty(i,value){
 
-  const box=document.getElementById("fruitBox");
-  box.innerHTML="";
+qty[i]=Math.max(0,qty[i]+value);
 
-  list.forEach((f)=>{
-
-    const i=fruits.indexOf(f);
-
-    box.innerHTML+=`
-    <div class="fruit">
-      <img src="${imageUrl(f[2])}" alt="${f[0]}">
-
-      <h3>${f[0]}</h3>
-
-      <div class="price">₹${f[1]} / kg</div>
-
-      <div class="controls">
-        <button class="btn" onclick="changeQty(${i},-1)">−</button>
-        <span class="qty" id="q${i}">${qty[i]}</span>
-        <button class="btn" onclick="changeQty(${i},1)">+</button>
-      </div>
-    </div>`;
-  });
-}
-
-function changeQty(i,d){
-
-  qty[i]=Math.max(0,qty[i]+d);
-
-  document.getElementById("q"+i).innerText=qty[i];
-
-  updateTotal();
+render();
 }
 
 function updateTotal(){
 
-  let fruitTotal=0;
+let fruitTotal=0;
 
-  fruits.forEach((f,i)=>{
-    fruitTotal += qty[i]*f[1];
-  });
+fruits.forEach((f,i)=>{
+fruitTotal += qty[i]*f[1];
+});
 
-  const delivery=Number(document.getElementById("distance").value);
+let delivery=
+Number(document.getElementById("distance").value)||0;
 
-  document.getElementById("fruitTotal").innerText=fruitTotal;
-  document.getElementById("delivery").innerText=delivery;
-  document.getElementById("grandTotal").innerText=fruitTotal+delivery;
-}
+document.getElementById("fruitTotal").innerText=fruitTotal;
 
-function searchFruit(){
+document.getElementById("delivery").innerText=delivery;
 
-  const text=document.getElementById("search").value.toLowerCase();
-
-  const result=fruits.filter(f =>
-    f[0].toLowerCase().includes(text)
-  );
-
-  render(result);
+document.getElementById("grandTotal").innerText=
+fruitTotal+delivery;
 }
 
 function placeOrder(){
 
-  const n=document.getElementById("name").value.trim();
-  const m=document.getElementById("mobile").value.trim();
-  const a=document.getElementById("address").value.trim();
+let name=document.getElementById("name").value.trim();
 
-  const distanceText=document.getElementById("distance")
-    .options[document.getElementById("distance").selectedIndex].text;
+let mobile=document.getElementById("mobile").value.trim();
 
-  const payment=document.getElementById("payment").value;
+let address=document.getElementById("address").value.trim();
 
-  let items="";
+let distance=document.getElementById("distance").value;
 
-  fruits.forEach((f,i)=>{
-    if(qty[i]>0){
-      items += "🍎 "+f[0]+" — "+qty[i]+" kg — ₹"+(qty[i]*f[1])+"\n";
-    }
-  });
+let payment=document.getElementById("payment").value;
 
-  if(!n || !m || !a || !items){
-    alert("Please fill your details and select at least one fruit.");
-    return;
-  }
+let items=[];
 
-  if(document.getElementById("distance").value==="0"){
-    alert("Please select delivery distance.");
-    return;
-  }
+fruits.forEach((f,i)=>{
 
-  const total=document.getElementById("grandTotal").innerText;
+if(qty[i]>0){
 
-  const message =
-`🍃 ORGANISE FRESH FRUITS — NEW ORDER
+items.push(
+f[0]+" — "+qty[i]+" kg — ₹"+(qty[i]*f[1])
+);
 
-👤 Name: ${n}
-📱 Mobile: ${m}
-
-🚚 Delivery: ${distanceText}
-
-📍 Address:
-${a}
-
-🛒 ORDER:
-${items}
-
-💳 Payment: ${payment}
-
-💰 GRAND TOTAL: ₹${total}
-
-Please confirm my order.`;
-
-  window.location.href =
-  "https://wa.me/919182974520?text="+encodeURIComponent(message);
 }
 
-/* UPI QR */
-const upi =
-"upi://pay?pa=9182974520-z3b9-3@ybl&pn=Organise%20Fresh%20Fruits";
+});
 
-document.getElementById("qr").src =
-"https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="
-+encodeURIComponent(upi);
+if(!name||!mobile||!address||!distance){
+
+alert("Please fill Name, Mobile, Address and Delivery Distance.");
+
+return;
+}
+
+if(items.length===0){
+
+alert("Please select at least one fruit.");
+
+return;
+}
+
+let message=
+"🍎 ORGANISE FRESH FRUITS ORDER\n\n"+
+"Name: "+name+"\n"+
+"Mobile: "+mobile+"\n"+
+"Address: "+address+"\n"+
+"Payment: "+payment+"\n\n"+
+"ORDER:\n"+
+items.join("\n")+
+"\n\nFruit Total: ₹"+
+document.getElementById("fruitTotal").innerText+
+"\nDelivery: ₹"+
+document.getElementById("delivery").innerText+
+"\nGrand Total: ₹"+
+document.getElementById("grandTotal").innerText;
+
+let whatsappURL=
+"https://wa.me/919182974520?text="+
+encodeURIComponent(message);
+
+window.open(whatsappURL,"_blank");
+
+}
 
 render();
 
