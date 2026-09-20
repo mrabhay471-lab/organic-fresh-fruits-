@@ -1,304 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Organise Fresh Fruits</title>
-
+<meta name="theme-color" content="#0b3d2e">
+<title>Organise Fresh Fruits — Premium Home Delivery</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f8f1;color:#17351f}
-.hero{text-align:center;padding:50px 15px;background:linear-gradient(135deg,#e5f5d7,#fff6df)}
-.hero h1{font-size:40px;color:#075b2d;margin:12px 0}
-.hero p{font-size:18px}
-.badge{display:inline-block;background:white;padding:10px 15px;border-radius:30px;margin:5px;font-weight:bold}
-.wrap{max-width:1100px;margin:auto;padding:20px 14px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.fruit{background:white;border-radius:17px;padding:10px;text-align:center;box-shadow:0 4px 18px #0001}
-.fruit img{width:100%;height:170px;object-fit:cover;border-radius:13px}
-.fruit h3{margin:9px 0 4px}
-.fruit p{color:#607266}
-button{border:0;background:#087c3c;color:white;border-radius:10px;padding:9px 15px;font-size:18px}
-.qty{display:inline-block;min-width:35px;font-weight:bold}
-.checkout{margin-top:25px;background:white;border-radius:18px;padding:18px;box-shadow:0 4px 18px #0001}
-input,textarea,select{width:100%;padding:13px;margin:6px 0 12px;border:1px solid #ccd9cf;border-radius:10px;font-size:16px}
-textarea{height:85px}
-.wide{width:100%;margin-top:10px}
-.summary{border-top:1px solid #ddd;margin-top:15px;padding-top:12px;line-height:1.9}
-@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:32px}}
+:root{--g:#0b3d2e;--g2:#176148;--cream:#f7f5ee;--gold:#d8aa4b;--ink:#17251f;--muted:#6f7b75;--line:#e6e9e4}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--cream);color:var(--ink)}
+button,input,textarea{font:inherit}button{cursor:pointer}.top{background:var(--g);color:white;text-align:center;padding:8px;font-size:12px}
+nav{position:sticky;top:0;z-index:20;background:#fffffff2;backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:11px 16px;display:flex;justify-content:space-between;align-items:center}
+.brand{font-weight:900;color:var(--g);display:flex;align-items:center;gap:9px}.logo{width:39px;height:39px;border-radius:13px;background:linear-gradient(135deg,var(--g),#2b815e);display:grid;place-items:center;color:white;font-size:21px}
+.cart{border:0;background:var(--g);color:#fff;border-radius:999px;padding:10px 15px;font-weight:800}.badge{background:white;color:var(--g);border-radius:50%;padding:3px 7px;margin-left:5px}
+.hero{max-width:1180px;margin:auto;padding:24px 16px;display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.heroText{background:linear-gradient(135deg,var(--g),var(--g2));border-radius:28px;color:white;padding:36px;min-height:360px;display:flex;flex-direction:column;justify-content:center}.kicker{color:#f1d88d;text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:900}.hero h1{font-size:clamp(40px,7vw,68px);line-height:.94;margin:14px 0;letter-spacing:-3px}.hero p{color:#d8e5df;line-height:1.6;max-width:540px}.shop{display:inline-block;text-decoration:none;background:white;color:var(--g);padding:13px 18px;border-radius:14px;font-weight:900;width:max-content;margin-top:8px}
+.heroImg{min-height:360px;border-radius:28px;background:linear-gradient(135deg,#d9eadf,#f4ead0);display:grid;place-items:center;overflow:hidden;box-shadow:0 20px 50px #17351f22}.fruitShow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:390px;width:82%;transform:rotate(-3deg)}
+.fruitBig{height:110px;border-radius:28px;background:#ffffffb8;backdrop-filter:blur(8px);display:grid;place-items:center;font-size:68px;box-shadow:0 16px 30px #17351f18;transform:rotate(3deg)}
+.section{max-width:1180px;margin:auto;padding:15px 16px 40px}.head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:15px}.head h2{margin:0;font-size:29px}.head p{margin:4px 0;color:var(--muted);font-size:14px}.search{width:min(100%,300px);padding:12px 14px;border:1px solid var(--line);border-radius:14px;outline:0;background:white}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:white;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 8px 24px #17351f0b}.pic{height:175px;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#fff 0,#f7f5ee 45%,#e8f0e8 100%);font-size:88px}.body{padding:13px}.body h3{margin:0 0 5px;font-size:17px}.meta{display:flex;justify-content:space-between}.price{font-weight:900;color:var(--g)}.unit{font-size:11px;color:var(--muted)}.add{width:100%;border:0;border-radius:12px;background:var(--g);color:white;padding:11px;margin-top:10px;font-weight:900}.qty{display:flex;justify-content:space-between;align-items:center;margin-top:10px;border:1px solid var(--line);border-radius:12px;overflow:hidden}.qty button{width:40px;height:40px;border:0;background:#f0f4ef;color:var(--g);font-size:21px;font-weight:900}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.trust div{background:white;border:1px solid var(--line);border-radius:18px;padding:17px}.trust span{display:block;color:var(--muted);font-size:13px;margin-top:4px}
+.overlay{display:none;position:fixed;inset:0;background:#061b14aa;z-index:50}.overlay.open{display:block}.drawer{position:absolute;right:0;top:0;height:100%;width:min(540px,100%);background:#f8faf7;overflow:auto;padding:18px}.drawerHead{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#e9eee9;width:38px;height:38px;border-radius:50%;font-size:20px}
+.item{display:grid;grid-template-columns:58px 1fr auto;gap:10px;align-items:center;background:white;border:1px solid var(--line);padding:10px;border-radius:15px;margin:10px 0}.miniPic{width:58px;height:58px;border-radius:12px;background:#f1f6ef;display:grid;place-items:center;font-size:29px}.miniQty{display:flex;gap:7px;align-items:center;margin-top:6px}.miniQty button{border:0;background:#edf2ed;border-radius:8px;width:28px;height:28px;font-weight:900}
+.summary,.formBox{background:white;border:1px solid var(--line);border-radius:18px;padding:15px;margin-top:14px}.row{display:flex;justify-content:space-between;padding:5px 0}.total{border-top:1px solid var(--line);margin-top:7px;padding-top:12px;font-size:19px;font-weight:950}.formBox label{display:block;font-size:12px;font-weight:800;margin:10px 0 5px}.formBox input,.formBox textarea{width:100%;padding:12px;border:1px solid #dfe5df;border-radius:12px;outline:0}.formBox textarea{min-height:75px}.distance{display:grid;grid-template-columns:1fr 1fr;gap:9px}.pay{background:#f2f7f2;border:1px dashed #aab9ae;border-radius:16px;padding:12px;margin-top:12px}.qr{display:block;width:170px;height:170px;margin:10px auto;background:white;padding:6px;border-radius:12px}.order{width:100%;border:0;border-radius:14px;background:var(--g);color:white;padding:14px;margin-top:12px;font-weight:950;font-size:16px}.note{font-size:11px;color:var(--muted);line-height:1.45;margin-top:8px}.err{color:#b42318;font-size:12px;margin-top:6px;display:none}.empty{text-align:center;padding:30px;color:var(--muted)}
+footer{background:#092f24;color:#d8e5df;text-align:center;padding:28px 16px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:680px){.hero{grid-template-columns:1fr}.heroImg{min-height:230px;order:-1}.heroText{min-height:310px;padding:28px}.grid{grid-template-columns:repeat(2,1fr);gap:10px}.pic{height:145px;font-size:68px}.trust{grid-template-columns:1fr}.head{align-items:stretch;flex-direction:column}.search{width:100%}}@media(max-width:380px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
+<div class="top">🍃 Premium quality • Home delivery within 10 km • WhatsApp ordering</div>
+<nav><div class="brand"><div class="logo">🍎</div><span>Organise Fresh Fruits</span></div><button class="cart" onclick="openCart()">Cart <span class="badge" id="count">0</span></button></nav>
 
 <section class="hero">
-<div>🍃 <b>FRESH • HEALTHY • PREMIUM</b></div>
-<h1>Organise Fresh Fruits</h1>
-<p>Premium fresh fruits delivered to your home.</p>
-<span class="badge">⚡ 15–20 Minutes</span>
-<span class="badge">📍 Within 10 KM</span>
+<div class="heroText"><div class="kicker">Premium fruit delivery</div><h1>Freshness,<br>delivered beautifully.</h1><p>Handpicked fruits for your home. Choose your favourites, select quantity and place your order directly on WhatsApp.</p><a class="shop" href="#fruits">Shop fresh fruits →</a></div>
+<div class="heroImg">
+      <div class="fruitShow">
+        <div class="fruitBig">🍎</div><div class="fruitBig">🍊</div><div class="fruitBig">🍇</div>
+        <div class="fruitBig">🍍</div><div class="fruitBig">🥭</div><div class="fruitBig">🍉</div>
+      </div>
+    </div>
 </section>
 
-<div class="wrap">
+<div id="loaded" style="max-width:1180px;margin:0 auto;padding:0 16px;color:#6f7b75;font-size:12px">✓ Fresh fruit catalogue loaded</div><section class="section" id="fruits">
+<div class="head"><div><h2>Fresh Fruit Collection</h2><p>30 fruits • 0.5 kg quantity steps</p></div><input class="search" id="search" placeholder="Search fruit…" oninput="render()"></div>
+<div class="grid" id="grid"></div>
+<div class="trust"><div><b>🍃 Fresh selection</b><span>Quality-focused fruit selection.</span></div><div><b>🚴 Local delivery</b><span>0–10 km service.</span></div><div><b>📲 Easy checkout</b><span>WhatsApp order + UPI.</span></div></div>
+</section>
+<footer><b>Organise Fresh Fruits</b><br>Premium fruits • Home delivery • 0–10 km</footer>
 
-<h2>🍎 Choose Your Fruits</h2>
-
-<div class="grid" id="fruits"></div>
-
-<div class="checkout">
-
-<h2>🛒 Your Order</h2>
-
-<div id="cart">No fruits selected.</div>
-
-<input id="name" placeholder="Your name">
-<input id="mobile" placeholder="Mobile number">
-
-<textarea id="address"
-placeholder="Full delivery address"></textarea>
-
-<button class="wide" onclick="checkDelivery()">
-📍 Check Delivery Area
-</button>
-
-<p id="distance">
-Delivery charge will appear at checkout.
-</p>
-
-<div class="summary">
-Fruit Total: ₹<b id="fruitTotal">0</b><br>
-Delivery: ₹<b id="delivery">0</b><br>
-⚡ Estimated delivery: <b>15–20 minutes</b>
-
-<h3>
-Grand Total: ₹<span id="grandTotal">0</span>
-</h3>
-</div>
-
-<select id="payment">
-<option>UPI</option>
-<option>Cash on Delivery</option>
-</select>
-
-<button class="wide" onclick="placeOrder()">
-📲 Place Order on WhatsApp
-</button>
-
-</div>
-</div>
+<div class="overlay" id="overlay" onclick="closeCart(event)"><aside class="drawer" onclick="event.stopPropagation()">
+<div class="drawerHead"><h2>Your Cart</h2><button class="close" onclick="closeCart()">×</button></div>
+<div id="items"></div>
+<div class="summary"><div class="row"><span>Item total</span><b id="sub">₹0</b></div><div class="row"><span>Delivery</span><b id="del">₹0</b></div><div class="row total"><span>Grand total</span><b id="grand">₹0</b></div></div>
+<div class="formBox"><h3>Delivery details</h3>
+<label>Name</label><input id="name" placeholder="Customer name">
+<label>Mobile number</label><input id="mobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile">
+<label>Delivery address</label><textarea id="address" placeholder="House / Flat, street, area, landmark"></textarea>
+<label>Delivery distance</label><div class="distance"><input id="distance" type="number" min="0" max="10" step="0.1" placeholder="Distance in km"><div style="padding:11px;background:#fff;border:1px solid #e6e9e4;border-radius:12px"><b id="distText">Enter distance</b><br><small>0–5 km ₹50 • 5–10 km ₹100</small></div></div>
+<div class="err" id="err">Delivery is available only within 10 km.</div>
+<div class="pay"><b>UPI payment</b><br>Scan the QR after confirming the total.<img class="qr" id="qr" alt="UPI QR"><div style="text-align:center;font-weight:800">organisefresh@upi</div></div>
+<button class="order" onclick="placeOrder()">Place Order on WhatsApp</button>
+<div class="note">Tapping the button opens WhatsApp with the complete order message ready to send.</div>
+</div></aside></div>
 
 <script>
-
-const fruits = [
-
-["Apple",200,"https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=600&q=85"],
-
-["Orange",50,"https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&fit=crop&w=600&q=85"],
-
-["Papaya",60,"https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=600&q=85"],
-
-["Pomegranate",120,"https://images.unsplash.com/photo-1541344999736-83eca272f6fc?auto=format&fit=crop&w=600&q=85"],
-
-["Guava",70,"https://images.unsplash.com/photo-1536511132770-e5058c7e8c46?auto=format&fit=crop&w=600&q=85"],
-
-["Banana",40,"https://images.unsplash.com/photo-1571771894821-ce9b6c6e4f70?auto=format&fit=crop&w=600&q=85"],
-
-["Mango",80,"https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=600&q=85"],
-
-["Watermelon",30,"https://images.unsplash.com/photo-1563114773-84221bd62daa?auto=format&fit=crop&w=600&q=85"],
-
-["Muskmelon",60,"https://images.unsplash.com/photo-1571575173700-afb9492e6a50?auto=format&fit=crop&w=600&q=85"],
-
-["Pineapple",70,"https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=600&q=85"],
-
-["Grapes",100,"https://images.unsplash.com/photo-1537640538966-79f369143a8f?auto=format&fit=crop&w=600&q=85"],
-
-["Strawberry",150,"https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=600&q=85"],
-
-["Blueberry",250,"https://images.unsplash.com/photo-1498557850523-fd3d118b962e?auto=format&fit=crop&w=600&q=85"],
-
-["Kiwi",120,"https://images.unsplash.com/photo-1585059895524-72359e06133a?auto=format&fit=crop&w=600&q=85"],
-
-["Dragon Fruit",150,"https://images.unsplash.com/photo-1527325678964-54921661f888?auto=format&fit=crop&w=600&q=85"],
-
-["Cherry",200,"https://images.unsplash.com/photo-1528821128474-27f963b062bf?auto=format&fit=crop&w=600&q=85"],
-
-["Peach",120,"https://images.unsplash.com/photo-1629828874514-80c7d0c0a7c4?auto=format&fit=crop&w=600&q=85"],
-
-["Lemon",60,"https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=600&q=85"],
-
-["Coconut",40,"https://images.unsplash.com/photo-1580984969071-a8da7f3a1c5b?auto=format&fit=crop&w=600&q=85"],
-
-["Jackfruit",60,"https://images.unsplash.com/photo-1605027990121-cbae9e0642df?auto=format&fit=crop&w=600&q=85"],
-
-["Fig",180,"https://images.unsplash.com/photo-1601379760883-1bb497c558c7?auto=format&fit=crop&w=600&q=85"],
-
-["Plum",120,"https://images.unsplash.com/photo-1568571780765-9276ac8b75a0?auto=format&fit=crop&w=600&q=85"],
-
-["Apricot",150,"https://images.unsplash.com/photo-1625580799140-8c7f9d2c9b75?auto=format&fit=crop&w=600&q=85"],
-
-["Litchi",180,"https://images.unsplash.com/photo-1629859701180-4c5d3f1b0b85?auto=format&fit=crop&w=600&q=85"],
-
-["Custard Apple",100,"https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=600&q=85"],
-
-["Sapota",80,"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=85"],
-
-["Starfruit",100,"https://images.unsplash.com/photo-1601379760883-1bb497c558c7?auto=format&fit=crop&w=600&q=85"],
-
-["Pear",90,"https://images.unsplash.com/photo-1514756331096-242fdeb70d4a?auto=format&fit=crop&w=600&q=85"],
-
-["Grapefruit",80,"https://images.unsplash.com/photo-1557800636-894a64c1696f?auto=format&fit=crop&w=600&q=85"]
-
+const WHATSAPP="9182974520";
+const UPI="organisefresh@upi";
+const fruits=[
+["Apple","🍎",180],["Banana","🍌",60],["Orange","🍊",90],["Mango","🥭",120],["Papaya","🥭",70],["Pomegranate","❤️",180],["Pineapple","🍍",100],["Guava","🍐",80],["Watermelon","🍉",45],["Grapes","🍇",110],["Strawberry","🍓",220],["Kiwi","🥝",250],["Dragon Fruit","🐉",300],["Avocado","🥑",280],["Pear","🍐",160],["Peach","🍑",220],["Plum","🫐",200],["Chikoo","🥔",120],["Custard Apple","🍏",180],["Muskmelon","🍈",60],["Lychee","🍒",180],["Coconut","🥥",70],["Lemon","🍋",80],["Sweet Lime","🍋",90],["Jackfruit","🍈",80],["Fig","🟣",300],["Blueberry","🫐",500],["Raspberry","🍓",450],["Cherry","🍒",400],["Passion Fruit","🟢",350]
 ];
-
-let qty = Array(fruits.length).fill(0);
-let delivery = 0;
-let checked = false;
-
-const box = document.getElementById("fruits");
-
-fruits.forEach((f,i)=>{
-
-box.innerHTML += `
-<div class="fruit">
-
-<img src="${f[2]}" alt="${f[0]}">
-
-<h3>${f[0]}</h3>
-
-<p>₹${f[1]}/kg</p>
-
-<button onclick="changeQty(${i},-1)">−</button>
-
-<span class="qty" id="q${i}">0</span>
-
-<button onclick="changeQty(${i},1)">+</button>
-
-</div>
-`;
-
-});
-
-function changeQty(i,d){
-
-qty[i]=Math.max(0,qty[i]+d);
-
-document.getElementById("q"+i).textContent=qty[i];
-
-updateCart();
-
+let cart=JSON.parse(localStorage.getItem("off_cart_final")||"{}");
+const money=n=>"₹"+Math.round(n).toLocaleString("en-IN");
+function render(){
+ const q=document.getElementById("search").value.trim().toLowerCase(),g=document.getElementById("grid");
+ const list=fruits.map((f,i)=>({...f,i})).filter(f=>f[0].toLowerCase().includes(q));
+ g.innerHTML=list.length?list.map(f=>{let qty=cart[f.i]||0;return `<article class="card"><div class="pic">${f[1]}</div><div class="body"><h3>${f[0]}</h3><div class="meta"><span class="price">${money(f[2])}<span class="unit"> / kg</span></span><span class="unit">Premium</span></div>${qty?`<div class="qty"><button onclick="change(${f.i},-.5)">−</button><span>${qty} kg</span><button onclick="change(${f.i},.5)">+</button></div>`:`<button class="add" onclick="change(${f.i},.5)">Add 0.5 kg</button>`}</div></article>`}).join(""):`<div class="empty">No fruit found.</div>`;
+ updateCount();
 }
-
-function updateCart(){
-
-let total=0;
-let items=[];
-
-qty.forEach((x,i)=>{
-
-if(x>0){
-
-total+=x*fruits[i][1];
-
-items.push(fruits[i][0]+": "+x+" kg");
-
-}
-
-});
-
-document.getElementById("fruitTotal").textContent=total;
-
-document.getElementById("delivery").textContent=delivery;
-
-document.getElementById("grandTotal").textContent=total+delivery;
-
-document.getElementById("cart").innerHTML=
-
-items.length
-? items.join("<br>")+"<hr>Fruit subtotal: ₹"+total
-: "No fruits selected.";
-
-}
-
-function checkDelivery(){
-
-if(!document.getElementById("address").value.trim()){
-
-alert("Please enter delivery address first.");
-
-return;
-
-}
-
-let km=prompt("Enter distance from shop in KM for now:");
-
-if(km===null)return;
-
-km=parseFloat(km);
-
-if(isNaN(km)||km<0){
-
-alert("Enter a valid distance.");
-
-return;
-
-}
-
-if(km<=5){
-
-delivery=50;
-
-}else if(km<=10){
-
-delivery=100;
-
-}else{
-
-delivery=0;
-
-alert("Sorry, delivery available only within 10 KM.");
-
-}
-
-checked=true;
-
-document.getElementById("distance").innerHTML=
-"Distance from shop: <b>"+km.toFixed(1)+" km</b>";
-
-updateCart();
-
-}
-
+function change(i,d){cart[i]=Math.max(0,Math.round(((cart[i]||0)+d)*2)/2);if(!cart[i])delete cart[i];localStorage.setItem("off_cart_final",JSON.stringify(cart));render();renderCart()}
+function totals(){let sub=Object.keys(cart).reduce((s,k)=>s+cart[k]*fruits[k][2],0);let d=parseFloat(document.getElementById("distance").value);let delivery=Number.isFinite(d)?d<=5?50:d<=10?100:0:0;return{sub,delivery,grand:sub+delivery}}
+function renderCart(){let box=document.getElementById("items"),keys=Object.keys(cart);box.innerHTML=keys.length?keys.map(k=>{let f=fruits[k];return `<div class="item"><div class="miniPic">${f[1]}</div><div><b>${f[0]}</b><small style="display:block;color:#6f7b75">${money(f[2])}/kg</small><div class="miniQty"><button onclick="change(${k},-.5)">−</button><b>${cart[k]} kg</b><button onclick="change(${k},.5)">+</button></div></div><b>${money(cart[k]*f[2])}</b></div>`}).join(""):`<div class="empty">Your cart is empty.<br>Add some fresh fruits first.</div>`;let t=totals();document.getElementById("sub").textContent=money(t.sub);document.getElementById("del").textContent=money(t.delivery);document.getElementById("grand").textContent=money(t.grand);updateCount();updateQR()}
+function updateCount(){document.getElementById("count").textContent=Object.values(cart).reduce((a,b)=>a+b,0)}
+function updateQR(){let t=totals();let upi=`upi://pay?pa=${encodeURIComponent(UPI)}&pn=${encodeURIComponent("Organise Fresh Fruits")}&am=${t.grand.toFixed(2)}&cu=INR`;document.getElementById("qr").src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="+encodeURIComponent(upi)}
+function openCart(){document.getElementById("overlay").classList.add("open");renderCart()}
+function closeCart(e){if(!e||e.target===document.getElementById("overlay"))document.getElementById("overlay").classList.remove("open")}
+document.getElementById("distance").addEventListener("input",()=>{let d=parseFloat(document.getElementById("distance").value);document.getElementById("err").style.display=Number.isFinite(d)&&d>10?"block":"none";document.getElementById("distText").textContent=!Number.isFinite(d)?"Enter distance":d<=5?"₹50 delivery":"₹100 delivery";renderCart()});
 function placeOrder(){
-
-if(!checked){
-
-alert("Please check delivery area first.");
-
-return;
-
+ let keys=Object.keys(cart),name=document.getElementById("name").value.trim(),mobile=document.getElementById("mobile").value.replace(/\D/g,""),address=document.getElementById("address").value.trim(),d=parseFloat(document.getElementById("distance").value);
+ if(!keys.length)return alert("Cart is empty");
+ if(!name)return alert("Enter your name");
+ if(!/^\d{10}$/.test(mobile))return alert("Enter a valid 10-digit mobile number");
+ if(!address)return alert("Enter delivery address");
+ if(!Number.isFinite(d)||d<0||d>10)return alert("Delivery must be within 10 km");
+ let t=totals(),lines=keys.map(k=>`• ${fruits[k][0]} — ${cart[k]} kg × ${money(fruits[k][2])}/kg = ${money(cart[k]*fruits[k][2])}`).join("\n");
+ let msg=`🍎 *NEW ORDER — ORGANISE FRESH FRUITS*%0A%0A*Customer:* ${name}%0A*Mobile:* ${mobile}%0A*Address:* ${address}%0A*Distance:* ${d} km%0A%0A*Fruits:*%0A${encodeURIComponent(lines)}%0A%0A*Item Total:* ${money(t.sub)}%0A*Delivery:* ${money(t.delivery)}%0A*GRAND TOTAL:* ${money(t.grand)}%0A%0A*Payment:* UPI%0A*UPI ID:* ${UPI}`;
+ window.open(`https://wa.me/${WHATSAPP}?text=${msg}`,"_blank");
 }
-
-let name=document.getElementById("name").value.trim();
-let mobile=document.getElementById("mobile").value.trim();
-let address=document.getElementById("address").value.trim();
-
-let items=qty.map((x,i)=>
-x?fruits[i][0]+": "+x+" kg":null
-).filter(Boolean).join("\n");
-
-if(!name||!mobile||!address||!items){
-
-alert("Please fill your details and select fruits.");
-
-return;
-
-}
-
-let message=
-"🍎 ORGANISE FRESH FRUITS ORDER\n\n"+
-"Name: "+name+"\n"+
-"Mobile: "+mobile+"\n"+
-"Address: "+address+"\n\n"+
-items+"\n\n"+
-"Fruit Total: ₹"+document.getElementById("fruitTotal").textContent+"\n
+render();
+</script>
+</body>
+</html>
